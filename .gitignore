@@ -113,3 +113,4 @@ src/var/blacklists
 src/var/messages
 src/var/tokens
 src/var/database/messenger.db
+src/var/messages/*.json
