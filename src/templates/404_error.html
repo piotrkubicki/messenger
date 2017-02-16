@@ -1,0 +1,21 @@
+{% extends 'master.html' %}
+
+{% block content %}
+<div style="width: 50%; margin: auto; padding-top: 10%; font-size: 42px; text-align: center;">
+  <p>Sorry page not found!</p>
+  <p style="font-size: 24px;">You will be redirected within <span id="counter">5</span> seconds</p>
+</div>
+
+<script>
+  var time = 5;
+  
+  setInterval(function() {
+    time--;
+    $('#counter').html(time);
+  }, 1000);
+
+  setTimeout(function() {
+    window.location.href = '/';
+  }, 5000);
+</script>
+{% endblock %}

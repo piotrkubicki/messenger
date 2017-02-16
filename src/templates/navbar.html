@@ -1,0 +1,133 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <li><a class="navbar-brand" href="#">Messenger</a></li>
+    </div><!-- navbar-header -->
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Invite Friend <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li>
+            <div class="input-group">
+              <input id="invite-friend-username" type="text" class="form-control" placeholder="Friend username" />
+              <span class="input-group-btn">
+                <button id="invite-friend-btn" type="submit" class="btn">Invite</button> 
+              </span>
+            </div>
+          </li>
+          <li data-toggle="modal" data-target="#friend-search">
+            <a href="#">Search...</a>
+          </li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">{{ user.username }} <span class="caret"></span></a> 
+        <ul class="dropdown-menu">
+          <li data-toggle="modal" data-target="#profile"><a href="#">Profile</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div><!-- container-fluid -->
+
+  <input type="hidden" id="user-id" value="{{ user.user_id }}" />
+  
+  <div class="modal fade" id="profile" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Profile</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <input class="form-control" type="text" name="first-name" id="first-name" value="{{ user.first_name }}" placeholder="First name" />
+            <input class="form-control" type="text" name="last-name" id="last-name" value="{{ user.last_name }}" placeholder="Last name" />
+            <label>Date of birth</label>
+            <div class="form-group" style="padding-left: 4%; padding-right: 2%;">
+              <select class="form-control col-sm-2" id="day" name="day" style="width: 30%">
+                <option value="">Day</option>
+                {% for i in range(1, 32) %}
+                {% if i|string == user.date_of_birth.day %}
+                <option value="{{ i }}" selected>{{ i }}</option>
+                {% else %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endif %}
+                {% endfor %}
+              </select>
+              <select class="form-control col-sm-2" id="month" name="month" style="width: 33%">
+                <option value="">Month</option>
+                {% for i in range(1, 13) %}
+                {% if i|string == user.date_of_birth.month %}
+                <option value="{{ i }}" selected>{{ i }}</option>
+                {% else %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endif %}
+                {% endfor %}
+              </select>
+              <select class="form-control col-sm-2" id="year" name="year" style="width: 33%">
+                <option value="">Year</option>
+                {% for i in range(2012, 1955, -1) %}
+                {% if i|string == user.date_of_birth.year %}
+                <option value="{{ i }}" selected>{{ i }}</option>
+                {% else %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endif %}
+                {% endfor %}
+              </select>
+            </div>
+            <label>Avatar</label>
+            <div class="input-group">
+              <input type="file" class="form-control" id="user-photo" name="user-photo" />
+              <span class="input-group-btn">
+                <button class="btn btn-warning" id="load-file">Load</button>
+              </span>
+            </div>
+         </form>
+        </div>
+        <div class="modal-footer">
+          <button id="profile-update-btn" class="btn btn-success">Update</button>
+          <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+      </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+  </div><!-- profile -->
+  
+  <div class="modal fade" id="friend-search" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Search for friends</h4>
+        </div>
+        <div class="modal-body" style="overflow: auto;">
+          <form class="form-horizontal">
+            <input class="form-control" type="text" name="friend-first-name" id="friend-first-name" placeholder="First name" />
+            <input class="form-control" type="text" name="friend-last-name" id="friend-last-name" placeholder="Last name" />
+            <input class="form-control" type="text" name="friend-username" id="friend-username" placeholder="Username" />
+            <label>Date of birth</label>
+            <div class="form-group" style="padding-left: 4%; padding-right: 2%;">
+              <select class="form-control col-sm-2" id="friend-day" name="friend-day" style="width: 30%">
+                <option value="">Day</option>
+                {% for i in range(1, 32) %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+              </select>
+              <select class="form-control col-sm-2" id="friend-month" name="friend-month" style="width: 33%">
+                <option value="">Month</option>
+                {% for i in range(1, 13) %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+              </select>
+              <select class="form-control col-sm-2" id="friend-year" name="friend-year" style="width: 33%">
+                <option value="">Year</option>
+                {% for i in range(2012, 1955, -1) %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </form>
+          <button id="friend-search-btn" class="btn btn-success form-control">Search</button>
+          <button class="btn btn-danger form-control" data-dismiss="modal">Cancel</button>
+          <div id="friends-box"></div>
+        </div>
+      </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+  </div><!-- friend-search -->
+</nav>

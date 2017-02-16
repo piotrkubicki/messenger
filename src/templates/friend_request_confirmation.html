@@ -1,0 +1,22 @@
+<div class="modal fade friend-request-conf" id="friend-request-confirmation-{{ request.request_id }}" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Friend Invitation</h4>
+      </div><!-- modal-header -->
+      <div class="modal-body">
+        <div>
+          <img class="avatar" src="data:image/png;base64,{{ request.avatar }}" />
+          <h4>User <strong>{{ request.first_name }} {{ request.last_name }}</strong> sends you an friend invitaion.</h4>
+          <input id="friend-request-id" type="hidden" data-request="{{ request.request_id }}" />
+          <input id="request-user-id" type="hidden" data-user-id="{{ request.user_id }}" />  
+        </div>
+      </div><!-- modal-body -->
+      <div class="modal-footer">
+        <button id="confirm-friend-request" data-answer="1" class="btn btn-success">Accept</button>
+        <button id="reject-friend-request" data-answer="2" class="btn btn-warning">Reject</button>
+        <button id="block-user" data-answer="3" class="btn btn-danger">Block</button>
+      </div><!-- modal-footer -->
+    </div><!-- modal-content -->
+  </div><!-- modal-dialog -->
+</div><!-- modal -->

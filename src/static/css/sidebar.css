@@ -1,0 +1,105 @@
+body {
+  overflow: hidden;
+}
+
+#sidebar {
+  width: 14vw;
+  height: 95vh;
+  margin: 0;
+  padding: 0;
+  float: left;
+  overflow: auto;
+  background-color: #3C0053;
+}
+
+.sidebar-list {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  font-family: Georgia, Serif;
+  font-size: 20px;
+}
+
+.list-item {
+  height: 55px;
+  width: 100%;
+  background-color: #9900D2;
+  border: 1px solid #3C0053;
+}
+
+.sublist-item {
+  background-color: #B041DA;
+}
+
+.list-item > a {
+  display: block;
+  padding: 10px;
+  color: white;
+  height: 100%;
+  padding-top: 15px;
+}
+
+.list-item > a:visited, a:link {
+  color: white;
+  text-decoration: none;
+}
+
+.list-item > a:hover, a:active {
+  color: black;
+  text-decoration: none;
+}
+
+.header > a:hover, a:active {
+  color: white;
+}
+
+.avatar {
+  background-color: white;
+  border-radius: 50px;
+}
+
+.sm {
+  width: 40px;
+  height: 40px;
+  margin-top: -7px;
+  margin-right: 15px;
+}
+
+.inf {
+  position: absolute;
+  top: -55px;
+  width: 100%;
+  z-index: 9999;
+  text-align: center;
+  animation: slideUpInf 0.5s ease-in;
+}
+
+.inf.active {
+  top: 0;
+  animation: slideDownInf 0.5s ease-in;
+}
+
+.unseen-msg {
+  animation: unseen-msg 1.5s linear infinite;
+}
+
+.unseen-msg > a:hover {
+  color: white;
+}
+
+@keyframes slideDownInf {
+  0%    { top: -55px; }
+  100%  { top: 0; }
+}
+
+@keyframes slideUpInf {
+  0%    { top: 0; }
+  100%  { top: -55px; }
+}
+
+@keyframes unseen-msg {
+  0%    { background-color: #B041DA; }
+  50%   { background-color: black; }
+  100%  { background-color: #B041DA; }
+}

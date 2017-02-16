@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='lib/bootstrap/css/bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='lib/font-awesome/font-awesome.css') }}" />
+    {% block header %} {% endblock %}
+
+    <title>Messanger</title>
+  </head>
+  </body>
+    {% block content %} {% endblock %}
+
+    <script src="{{ url_for('static', filename='lib/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/bootstrap/js/bootstrap.js') }}"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+    {% block footer %} {% endblock %}
+  </body>
+</html>

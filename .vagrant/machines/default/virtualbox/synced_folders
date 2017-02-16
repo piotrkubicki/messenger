@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/pz/Projects/python/messenger","disabled":false,"__vagrantfile":true},"vagrant-notify":{"id":"vagrant-notify","guestpath":"/tmp/vagrant-notify","hostpath":"/tmp/vagrant-notify/acdf8274-7b94-4516-8ed7-4d33bcf32ab3","disabled":false,"__vagrantfile":true}}}

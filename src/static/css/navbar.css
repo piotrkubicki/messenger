@@ -1,0 +1,137 @@
+.navbar-default {
+  background-color: #3C0053;
+  border-color: #3C0053;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* title */
+.navbar-default .navbar-brand {
+  color: white;
+}
+            
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #5E5E5E;
+}
+                
+/* link */
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: white;
+}
+
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #555;
+  background-color: #E7E7E7;
+}
+
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+  color: white;
+  background-color: #9900D2;
+}
+
+/* caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+  border-top-color: white;
+  border-bottom-color: white;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+  border-top-color: white;
+  border-bottom-color: white;
+}
+
+.navbar-default .navbar-nav > .open > a .caret, 
+.navbar-default .navbar-nav > .open > a:hover .caret, 
+.navbar-default .navbar-nav > .open > a:focus .caret {
+  border-top-color: white;
+  border-bottom-color: white;
+}
+
+/* mobile version */
+.navbar-default .navbar-toggle {
+  border-color: #DDD;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #DDD;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #CCC;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+select {
+  margin-right: 2px;
+}
+
+#friends-box {
+  max-height: 300px;
+  overflow: auto;
+}
+
+#friends-box > .friend-entry {
+  height: 60px;
+  width: 49%;
+  margin-right: 5px;
+  float: left;
+}
+
+#friends-box > .friend-entry > img {
+  float: left;
+}
+
+#friends-box > .friend-entry > div {
+  float: left;
+  margin-top: -10px;
+}
+
+#friends-box > .friend-entry > div > p {
+  margin-bottom: 2px;
+}
+
+#friends-box > .friend-entry > button {
+  margin-top: -7px;
+  float: right;
+}
+
+#invite-friend-username {
+  width: 200px;
+  margin: 5px;
+  margin-right: 0;
+}
+
+#invite-friend-btn {
+  background-color: #9900D2;
+  color: white;
+  margin-right: 5px;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #777;
+  }
+
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #333;
+  }
+}

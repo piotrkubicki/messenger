@@ -1,0 +1,10 @@
+{% for friend in friends %}
+<div class="well friend-entry">
+  <img class="avatar sm"  src="data:image/png;base64,{{ friend.avatar }}" />
+  <div>
+    <p><strong>{{ friend.username }}</strong></p>
+    <p>{{ friend.first_name }} {{ friend.last_name }}</p>
+  </div>
+  <button class="btn btn-success" data-username="{{ friend.username }}">Invite</button>
+</div>
+{% endfor %}

@@ -1,0 +1,15 @@
+<div id="sidebar" class="container">
+  <ul class="sidebar-list">
+    <li id="friends" class="list-item header">
+      <a href="#"><i class="fa fa-users" aria-hidden="true"></i> Friends</a>
+    </li>
+    <ul id="friends-list" class="sidebar-list sublist">
+      {% for friend in friends %}
+      <li class="list-item sublist-item {% if friend.unseen_msg %} unseen-msg {% endif %}">
+        <a id="{{ friend.user_id }}" href="#"><img class="avatar sm" src="data:image/png;base64,{{ friend.avatar }}" />{{ friend.username }}<i class="pull-right"></i></a>
+      </li>
+      {% endfor %}
+    </ul>
+  </ul>
+
+</div><!-- sidebar -->

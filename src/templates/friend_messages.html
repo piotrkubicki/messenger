@@ -1,0 +1,14 @@
+{% for message in messages %}
+  {% set date = message.datetime.split(' ') %}
+  {% if message.user_id == user_id  %}
+  <div class="user">
+    <p><strong>{{ message.username }}</strong> on {{ date[0] }} at {{ date[1] }}</p>
+    <p>{{ message.message }}</p>
+  </div>
+  {% else %}
+  <div class="friend">
+    <p><strong>{{ message.username }}</strong> on {{ date[0] }} at {{ date[1] }}</p>
+    <p>{{ message.message }}</p>
+  </div>
+  {% endif %}
+{% endfor %}

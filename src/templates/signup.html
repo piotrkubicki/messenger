@@ -1,0 +1,63 @@
+{% extends 'master.html' %}
+
+{% block header %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}" />
+{% endblock %}
+
+{% block content %}
+<h1 id="brand">Messenger</h1>
+<div class="form-bg-outer">
+  <div class="form-bg-inner">
+    <div id="signup-container">
+      <h2>Sign up</h2>
+      <form class="form-horizontal" action="" method="POST" name="signup-form" enctype="multipart/form-data">
+        <input class="form-control" type="text" name="username" id="username" placeholder="Username" />
+        <input class="form-control" type="password" name="password" id="password" placeholder="Password" />
+        <input class="form-control" type="password" name="password-confirmation" id="password-confirmation" placeholder="Password confirmation" />
+        <input class="form-control" type="text" name="first-name" id="first-name" placeholder="First name" />
+        <input class="form-control" type="text" name="last-name" id="last-name" placeholder="Last name" />
+        <label>Date of birth</label>
+        <div class="form-group" style="padding-left: 4%; padding-right: 2%;">
+          <select class="form-control col-sm-2" name="day" style="width: 30%">
+            <option value="">Day</option>
+            {% for i in range(1, 32) %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+          </select>
+          <select class="form-control col-sm-2" name="month" style="width: 33%">
+            <option value="">Month</option>
+            {% for i in range(1, 13) %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+          </select>
+          <select class="form-control col-sm-2" name="year" style="width: 33%">
+            <option value="">Year</option>
+            {% for i in range(2012, 1955, -1) %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <label class="">Avatar</label>
+        <input type="file" class="form-control" id="user-photo" name="user-photo" />
+        <button class="form-control btn" id="signup-btn" style="margin-top: 10px">Sign up</button>
+      </form>
+      <a href="/login">Sign in</a>
+
+      {% with errors = get_flashed_messages(category_filter=['error']) %}
+      {% if errors %}
+      {% for msg in errors %}
+      <div class="alert alert-danger" style="margin-top: 10px">
+        <p>{{ msg }}</p>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      {% if error %}
+      <div class="alert alert-danger">
+        <p>{{ error }}</p>
+      </div>
+      {% endif %}
+    </div>
+  </div><!-- form-bg-inner -->
+</div><!-- form-bg-outer -->
+{% endblock %}

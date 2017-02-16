@@ -1,0 +1,32 @@
+{% extends 'master.html' %}
+
+{% block header %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />
+{% endblock %}
+
+{% block content %}
+<h1 id="brand">Messenger</h1>
+<div class="form-bg-outer">
+  <div class="form-bg-inner">
+    <div id="login-container">
+      <h2>Login to your account</h2>
+      <form class="form-horizontal" action="" method="POST" name="login-form">
+        <input class="form-control" type="text" name="username" id="username" placeholder="Username" />
+        <input class="form-control" type="password" name="password" id="password" placeholder="Password" />
+        <button class="btn form-control" id="login-btn">Login</button>
+      </form>
+      <a href="/signup">Sign up</a>
+      
+      {% with errors = get_flashed_messages(category_filter=['error']) %}
+      {% if errors %}
+      {% for msg in errors %}
+      <div class="alert alert-danger" style="margin-top: 10px">
+        <p>{{ msg }}</p>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+    </div><!-- login-container -->
+  </div><!-- form-bg-inner -->
+</div><!-- form-bg-outer -->
+{% endblock %}
