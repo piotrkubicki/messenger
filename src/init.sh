@@ -5,4 +5,4 @@ mkdir -p var/messages
 mkdir -p var/blacklists
 mkdir -p var/tokens
 
-python db_init.py
+python ./db_init.py

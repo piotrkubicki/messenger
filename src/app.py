@@ -27,7 +27,8 @@ def init(app):
   config = ConfigParser.ConfigParser()
 
   try:
-    config_location = 'etc/defaults.cfg'
+    location = os.path.dirname(os.path.abspath(__file__))
+    config_location = os.path.join(location, 'etc/defaults.cfg')
     config.read(config_location)
 
     app.config['DEBUG'] = config.get('config', 'debug')
@@ -49,7 +50,8 @@ def init(app):
     print 'Could not read configs from: %s' % config_location
 
 def logs(app):
-  log_pathname = app.config['log_location'] + app.config['log_file']
+  location = os.path.dirname(os.path.abspath(__file__))
+  log_pathname = os.path.join(*[location, app.config['log_location'], app.config['log_file']])
   file_handler = RotatingFileHandler(log_pathname, maxBytes = 1024 * 1024 * 10, backupCount = 1024)
   file_handler.setLevel(app.config['log_level'])
   formatter = logging.Formatter('%(levelname)s | %(asctime)s | %(module)s | %(funcName)s | %(message)s')
@@ -61,7 +63,8 @@ def get_db():
   db = getattr(g, 'db', None)
 
   if db is None:
-    db = sqlite3.connect(app.config['database_location'])
+    location = os.path.dirname(os.path.abspath(__file__))
+    db = sqlite3.connect(os.path.join(location, app.config['database_location']))
     g.db = db
 
   return db
@@ -609,5 +612,6 @@ def connected_friend_response(data):
 if __name__ == '__main__':
   init(app)
   logs(app)
+  DEBUG=True
   #socketio.run(app)
   eventlet.wsgi.server(eventlet.listen((app.config['ip_address'], int(app.config['port']))), app)
