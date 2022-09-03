@@ -1,0 +1,25 @@
+resource "aws_alb" "alb" {
+  load_balancer_type = "application"
+  name               = "messenger-load-balancer"
+  subnets            = aws_subnet.pub_subnet.*.id
+  security_groups    = [aws_security_group.alb_sg.id]
+}
+
+resource "aws_alb_target_group" "target_group" {
+  name        = "ecs-target-group"
+  port        = 80
+  protocol    = "HTTP"
+  vpc_id      = aws_vpc.vpc.id
+  target_type = "ip"
+}
+
+resource "aws_alb_listener" "alb_listener" {
+  load_balancer_arn = aws_alb.alb.arn
+  port              = 80
+  protocol          = "HTTP"
+
+  default_action {
+    target_group_arn = aws_alb_target_group.target_group.arn
+    type             = "forward"
+  }
+}
