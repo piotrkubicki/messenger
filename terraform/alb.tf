@@ -23,3 +23,7 @@ resource "aws_alb_listener" "alb_listener" {
     type             = "forward"
   }
 }
+
+output "alb-dns-name" {
+  value = aws_alb.alb.dns_name
+}

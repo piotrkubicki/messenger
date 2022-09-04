@@ -30,8 +30,8 @@ resource "aws_security_group" "ecs_sg" {
   vpc_id      = aws_vpc.vpc.id
 
   ingress {
-    from_port       = var.messenger_port
-    to_port         = var.messenger_port
+    from_port       = var.service_port
+    to_port         = var.service_port
     protocol        = "tcp"
     cidr_blocks     = ["0.0.0.0/0"]
     security_groups = [aws_security_group.alb_sg.id]

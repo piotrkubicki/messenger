@@ -52,9 +52,5 @@ resource "aws_route_table_association" "route_table_association" {
 
 
 resource "aws_ecr_repository" "messenger_service" {
-  name = "messenger-service"
-}
-
-output "alb-dns-name" {
-  value = aws_alb.alb.dns_name
+  name = var.service_name
 }

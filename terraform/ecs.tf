@@ -6,6 +6,8 @@ data "template_file" "task_definition_template" {
   template = file("../.aws/task-definition.json.tpl")
   vars = {
     REPOSITORY_URL = replace(aws_ecr_repository.messenger_service.repository_url, "https://", "")
+    SERVICE_NAME = var.service_name
+    SERVICE_PORT = var.service_port
   }
 }
 
@@ -34,7 +36,7 @@ resource "aws_ecs_service" "messenger_service" {
 
   load_balancer {
     container_name   = "messenger-service"
-    container_port   = var.messenger_port
+    container_port   = var.service_port
     target_group_arn = aws_alb_target_group.target_group.id
   }
 
